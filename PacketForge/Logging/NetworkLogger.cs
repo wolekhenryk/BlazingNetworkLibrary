@@ -1,4 +1,5 @@
 ﻿using PacketForge.Enums;
+using PacketForge.Interfaces;
 
 namespace PacketForge.Logging;
 

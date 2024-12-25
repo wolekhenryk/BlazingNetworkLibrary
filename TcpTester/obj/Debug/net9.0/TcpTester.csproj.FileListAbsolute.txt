@@ -1,0 +1,15 @@
+/home/henryk/game/TcpTester/bin/Debug/net9.0/TcpTester
+/home/henryk/game/TcpTester/bin/Debug/net9.0/TcpTester.deps.json
+/home/henryk/game/TcpTester/bin/Debug/net9.0/TcpTester.runtimeconfig.json
+/home/henryk/game/TcpTester/bin/Debug/net9.0/TcpTester.dll
+/home/henryk/game/TcpTester/bin/Debug/net9.0/TcpTester.pdb
+/home/henryk/game/TcpTester/obj/Debug/net9.0/TcpTester.GeneratedMSBuildEditorConfig.editorconfig
+/home/henryk/game/TcpTester/obj/Debug/net9.0/TcpTester.AssemblyInfoInputs.cache
+/home/henryk/game/TcpTester/obj/Debug/net9.0/TcpTester.AssemblyInfo.cs
+/home/henryk/game/TcpTester/obj/Debug/net9.0/TcpTester.csproj.CoreCompileInputs.cache
+/home/henryk/game/TcpTester/obj/Debug/net9.0/TcpTester.sourcelink.json
+/home/henryk/game/TcpTester/obj/Debug/net9.0/TcpTester.dll
+/home/henryk/game/TcpTester/obj/Debug/net9.0/refint/TcpTester.dll
+/home/henryk/game/TcpTester/obj/Debug/net9.0/TcpTester.pdb
+/home/henryk/game/TcpTester/obj/Debug/net9.0/TcpTester.genruntimeconfig.cache
+/home/henryk/game/TcpTester/obj/Debug/net9.0/ref/TcpTester.dll

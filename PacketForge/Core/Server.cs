@@ -1,8 +1,9 @@
-﻿using System.Collections.Concurrent;
-using System.Net.Sockets;
+﻿using System.Text;
+using Newtonsoft.Json;
 using PacketForge.Extensions;
+using PacketForge.Interfaces;
 
-namespace PacketForge;
+namespace PacketForge.Core;
 
 public class Server(TcpListener tcpListener, INetworkLogger logger)
 {
@@ -19,17 +20,27 @@ public class Server(TcpListener tcpListener, INetworkLogger logger)
     /// <summary>
     /// The clients that are connected to the server. The key is the client's GUID and the value is the client's TCP client.
     /// </summary>
-private readonly ConcurrentDictionary<Guid, TcpClient> _clients = [];
+    private readonly ConcurrentDictionary<Guid, TcpClient> _clients = [];
 
     /// <summary>
     /// Tracks the last activity (heartbeat or data received) for each client.
     /// </summary>
-private readonly ConcurrentDictionary<Guid, DateTime> _lastHeartbeats = [];
+    private readonly ConcurrentDictionary<Guid, DateTime> _lastHeartbeats = [];
+
+    /// <summary>
+    /// The streams that are connected to the server. The key is the client's GUID and the value is the client's network stream.
+    /// </summary>
+    private readonly ConcurrentDictionary<Guid, NetworkStream> _streams = [];
 
     /// <summary>
     /// Event triggered whenever a client sends data.
     /// </summary>
     public event Action<Guid, string>? ClientDataReceived;
+
+    /// <summary>
+    /// The number of clients that are connected to the server.
+    /// </summary>
+    public int ClientCount => _clients.Count;
 
     /// <summary>
     /// Starts the server and listens for incoming connections.
@@ -71,7 +82,13 @@ private readonly ConcurrentDictionary<Guid, DateTime> _lastHeartbeats = [];
         var clientGuid = new Guid(guidBytes);
 
         // The client is now connected.
-        _clients.TryAdd(clientGuid, client);
+        if (_clients.TryAdd(clientGuid, client)) {
+            _streams.TryAdd(clientGuid, stream);
+        } else {
+            client.Close();
+            throw new Exception($"Client {clientGuid} is already connected.");
+        }
+
         _lastHeartbeats.TryAdd(clientGuid, DateTime.UtcNow);
 
         _logger.LogInfo($"Client {clientGuid} connected.");
@@ -89,7 +106,7 @@ private readonly ConcurrentDictionary<Guid, DateTime> _lastHeartbeats = [];
                     _lastHeartbeats[clientGuid] = DateTime.UtcNow;
 
                     // Process the received data
-                    var receivedData = System.Text.Encoding.UTF8.GetString(buffer, 0, bytesRead);
+                    var receivedData = Encoding.UTF8.GetString(buffer, 0, bytesRead);
 
                     // Raise the event to notify subscribers
                     ClientDataReceived?.Invoke(clientGuid, receivedData);
@@ -112,8 +129,24 @@ private readonly ConcurrentDictionary<Guid, DateTime> _lastHeartbeats = [];
             // Clean up resources when the client disconnects or an error occurs
             _clients.TryRemove(clientGuid, out _);
             _lastHeartbeats.TryRemove(clientGuid, out _);
+            _streams.TryRemove(clientGuid, out _);
             client.Close();
             Console.WriteLine($"Client {clientGuid} disconnected.");
+        }
+    }
+
+    /// <summary>
+    /// Broadcasts a message to all connected clients.
+    /// </summary>
+    /// <param name="message"></param>
+    /// <returns></returns>
+    public async Task BroadcastAsync<T>(T message)
+    {
+        var messageBytes = Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(message));
+
+        foreach (var stream in _streams.Values)
+        {
+            await stream.WriteAsync(messageBytes, 0, messageBytes.Length);
         }
     }
 

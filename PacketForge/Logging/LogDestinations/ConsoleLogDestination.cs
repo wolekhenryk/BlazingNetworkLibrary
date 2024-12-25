@@ -1,7 +1,11 @@
 ﻿using PacketForge.Enums;
+using PacketForge.Interfaces;
 
 namespace PacketForge.Logging.LogDestinations;
 
+/// <summary>
+/// Provides a log destination that writes log messages to the console.
+/// </summary>
 public class ConsoleLogDestination : ILogDestination
 {
     public void Write(string message, LogLevel logLevel)

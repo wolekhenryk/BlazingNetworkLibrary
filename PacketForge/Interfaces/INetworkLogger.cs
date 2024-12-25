@@ -1,6 +1,6 @@
 ﻿using PacketForge.Enums;
 
-namespace PacketForge;
+namespace PacketForge.Interfaces;
 
 public interface INetworkLogger
 {

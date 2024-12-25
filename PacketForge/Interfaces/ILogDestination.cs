@@ -1,7 +1,10 @@
 ﻿using PacketForge.Enums;
 
-namespace PacketForge;
+namespace PacketForge.Interfaces;
 
+/// <summary>
+/// Represents a destination for log messages.
+/// </summary>
 public interface ILogDestination
 {
     /// <summary>

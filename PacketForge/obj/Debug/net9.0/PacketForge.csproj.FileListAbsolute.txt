@@ -1,0 +1,13 @@
+/home/henryk/game/PacketForge/bin/Debug/net9.0/PacketForge.deps.json
+/home/henryk/game/PacketForge/bin/Debug/net9.0/PacketForge.dll
+/home/henryk/game/PacketForge/bin/Debug/net9.0/PacketForge.pdb
+/home/henryk/game/PacketForge/obj/Debug/net9.0/PacketForge.csproj.AssemblyReference.cache
+/home/henryk/game/PacketForge/obj/Debug/net9.0/PacketForge.GeneratedMSBuildEditorConfig.editorconfig
+/home/henryk/game/PacketForge/obj/Debug/net9.0/PacketForge.AssemblyInfoInputs.cache
+/home/henryk/game/PacketForge/obj/Debug/net9.0/PacketForge.AssemblyInfo.cs
+/home/henryk/game/PacketForge/obj/Debug/net9.0/PacketForge.csproj.CoreCompileInputs.cache
+/home/henryk/game/PacketForge/obj/Debug/net9.0/PacketForge.sourcelink.json
+/home/henryk/game/PacketForge/obj/Debug/net9.0/PacketForge.dll
+/home/henryk/game/PacketForge/obj/Debug/net9.0/refint/PacketForge.dll
+/home/henryk/game/PacketForge/obj/Debug/net9.0/PacketForge.pdb
+/home/henryk/game/PacketForge/obj/Debug/net9.0/ref/PacketForge.dll

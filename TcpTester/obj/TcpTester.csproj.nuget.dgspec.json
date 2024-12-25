@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/home/henryk/game/PacketForge/PacketForge.csproj": {}
+    "/home/henryk/game/TcpTester/TcpTester.csproj": {}
   },
   "projects": {
-    "/home/henryk/game/PacketForge/PacketForge.csproj": {
+    "/home/henryk/game/TcpTester/TcpTester.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/henryk/game/PacketForge/PacketForge.csproj",
-        "projectName": "PacketForge",
-        "projectPath": "/home/henryk/game/PacketForge/PacketForge.csproj",
+        "projectUniqueName": "/home/henryk/game/TcpTester/TcpTester.csproj",
+        "projectName": "TcpTester",
+        "projectPath": "/home/henryk/game/TcpTester/TcpTester.csproj",
         "packagesPath": "/home/henryk/.nuget/packages/",
-        "outputPath": "/home/henryk/game/PacketForge/obj/",
+        "outputPath": "/home/henryk/game/TcpTester/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/home/henryk/.nuget/NuGet/NuGet.Config"
@@ -44,20 +44,6 @@
       "frameworks": {
         "net9.0": {
           "targetAlias": "net9.0",
-          "dependencies": {
-            "Microsoft.Extensions.DependencyInjection.Abstractions": {
-              "target": "Package",
-              "version": "[9.0.0, )"
-            },
-            "Microsoft.Extensions.Hosting": {
-              "target": "Package",
-              "version": "[9.0.0, )"
-            },
-            "Newtonsoft.Json": {
-              "target": "Package",
-              "version": "[13.0.3, )"
-            }
-          },
           "imports": [
             "net461",
             "net462",
